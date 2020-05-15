@@ -9,12 +9,12 @@ typedef struct persona
 	unsigned short int edad;
 } Persona;
 
-Persona array_personas[10]; //variable global persona
+Persona array_personas[10]={0}; //variable global persona
 
 char cargar_datos(Persona array_personas[10]) //Función para cargar datos
 {
 	int c;
-	char respuesta1='n';
+	char respuesta1;
 	FILE *aarchivo;
 	aarchivo = fopen("archivo.bin", "rb");
 
@@ -22,6 +22,7 @@ char cargar_datos(Persona array_personas[10]) //Función para cargar datos
 	{
 		printf("Archivo inexistente o error en la apertura.\n");
 		printf("Desea cargar datos manualmente? [Y/N]\n");
+		while ((c = getc(stdin)) != '\n' && c != EOF);
 		scanf("%c",&respuesta1);
 		if (respuesta1=='n'||respuesta1=='N')
 		{
@@ -61,6 +62,7 @@ char modificar_persona(Persona array_personas[10]) //funcion para modificar a un
 	char respuesta;
 	do
 	{
+
 		printf("\nIntroduzca el id de la persona que desea modificar [1-10]: ");
 		scanf("%d",&opcion );
 		printf("\nPersona #%d\n",opcion );
