@@ -16,11 +16,8 @@ char cargar_datos(Persona array_personas[10]) //Función para cargar datos
 	int c;
 	char respuesta1='n';
 	FILE *aarchivo;
-	aarchivo = fopen("archivo.bin", "rb+");
-<<<<<<< HEAD
+	aarchivo = fopen("archivo.bin", "rb");
 
-=======
->>>>>>> bab47f3915a2f9eda42e4dd263f298513f8bb931
 	if(aarchivo == NULL)
 	{
 		printf("Archivo inexistente o error en la apertura.\n");
@@ -51,6 +48,7 @@ char cargar_datos(Persona array_personas[10]) //Función para cargar datos
 				scanf("%hu", &array_personas[i].edad);
 			}
 		}
+		return 0;
 	}
 	fread(array_personas, sizeof(Persona),10, aarchivo);
 	fclose(aarchivo);
@@ -215,4 +213,3 @@ int main() //función principal
 	while(respuesta=='n'||respuesta=='N');
 		return 0;
 }
-
