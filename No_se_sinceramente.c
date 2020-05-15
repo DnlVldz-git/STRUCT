@@ -17,7 +17,10 @@ char cargar_datos(Persona array_personas[10]) //Función para cargar datos
 	char respuesta1='n';
 	FILE *aarchivo;
 	aarchivo = fopen("archivo.bin", "rb+");
+<<<<<<< HEAD
 
+=======
+>>>>>>> bab47f3915a2f9eda42e4dd263f298513f8bb931
 	if(aarchivo == NULL)
 	{
 		printf("Archivo inexistente o error en la apertura.\n");
@@ -212,3 +215,4 @@ int main() //función principal
 	while(respuesta=='n'||respuesta=='N');
 		return 0;
 }
+
