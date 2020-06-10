@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void imprimir(char array[3][3])//this function prints the game board from the array
+void print(char array[3][3])//this function prints the game board from the array
 {
     for(int i = 0; i < 3; i++)
     {
@@ -142,9 +142,9 @@ char analyze (char array[][3], char tab)//analyze the game board and decides the
                 for(int y = 0; y < 3; y++)
                 {
                     if(array[x][y] == '*'){array[x][y] = tab;}
+                    return(array);
                 }
             }
-            return(array);
         }
     else if(aux == 8)
     {
@@ -175,14 +175,12 @@ char analyze (char array[][3], char tab)//analyze the game board and decides the
         else if(array[1][2] == '*'){array[1][2] = tab; return(array);}
     }
 }
-int main()
+int main(char tab, char enemy)
 {
     int i = 0, j = 0;
     FILE *archivo;
- 	char caracter, tab, enemy;
  	char game [3][3];
  	archivo = fopen("tablero.txt","r+");
- 	scanf("%c%c", &tab, &enemy);
     for(i = 0; i < 3; i++)
         {
             for(j = 0; j < 3; j++)
@@ -191,13 +189,19 @@ int main()
             }
         }
         fclose(archivo);
-        imprimir(game);
+        //print(game);
         win_condition(game, tab, enemy);
         loss_condition(game, tab, enemy);
         analyze(game, tab);
         archivo = fopen("tablero.txt","r+");
-        fwrite(game, 1, 9, archivo);
+        for(i = 0; i < 3; i++)
+        {
+            for(j = 0; j < 3; j++)
+            {
+                fputc(game[i][j], archivo);
+            }
+        }
         fclose(archivo);
-        imprimir(game);
+        //print(game);
 	return 0;
 }
